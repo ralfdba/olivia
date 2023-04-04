@@ -24,12 +24,12 @@
     <tbody>
         <?php
             for($n = 0; $n < count($results); $n++){               
-                $edit[] = "<a href=\"".site_url('admin/maestros/edit/'.$results[$n]->id.'')."\""
-                        . "class=\"badge badge-info\">"
+                $edit[] = "<a href=\"".site_url('admin/maestros/edit/'.$results[$n]->id)."\""
+                        . "class=\"badge text-bg-info\">"
                         . "<i class=\"fa fa-cogs\" aria-hidden=\"true\"></i>"
                         . "</a>"
-                        . "<a href=\"".site_url('admin/maestros/delete/'.$results[$n]->id.'')."\""
-                        . "class=\"badge badge-danger\">"
+                        . "<a href=\"".site_url('admin/maestros/delete/'.$results[$n]->id)."\""
+                        . "class=\"badge text-bg-danger\">"
                         . "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
                         . "</a>";                    
                 echo "<tr>"
