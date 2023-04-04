@@ -1,0 +1,28 @@
+:root {
+    --morado: #414175;
+    --moradodark: #530B74;
+    --rosado: #d17cbd;
+    --blanco: #ffffff;
+    --azuloscuro: #213b52;
+    --verde: #1F9AAF;
+    --celeste: #d6ebef;
+    --azulgris: #47536e;
+    --gris: #f1f3f6;
+    --gris2: #ebecf1;
+    --gris3: #f6f9fe;
+    --negro: #444444;
+    --rojo: #f02c1a;
+    --azulnavegacion: #1f0aaf;
+    --azulgris: #346799;
+    --azulrgba: rgba(55, 55, 63, 0.1);
+    --negrorgba: rgba(0,0,0,0.7);
+    --rosadorgba: rgba(209,124,189,1);
+    --fontsizeparrafo: 14px;
+    --fontsizeparrafo10: 10px;
+    --fontsizeparrafo12: 12px;
+    --fontsizeparrafo15: 15px;
+    --fontsizeparrafo20: 20px;
+    --fontsizeparrafo25: 25px;
+    --fontsizeparrafo30: 30px;
+    --fontfamilygeneral: 'Lexend', sans-serif !important;
+}
