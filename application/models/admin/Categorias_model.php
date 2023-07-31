@@ -76,4 +76,18 @@ class Categorias_model extends CI_Model{
         return $result;
     }
 
+    public function get_all_categories_api(){
+        $this->db->select("macategorias.id,macategorias.nombre as 'categoria',maestros.nombre");
+        $this->db->join('maestros', 'maestros.id = macategorias.tipo_muestra', 'left');
+        $opt = array("estado" => 0);
+        $query = $this->db->get_where($this->table['tabla'], $opt);
+        if ($query->num_rows() > 0){
+            foreach ($query->result() as $row){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;        
+    }    
+
 }

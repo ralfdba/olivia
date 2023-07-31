@@ -4,13 +4,13 @@ class Vistas{
     /**
      * @desc $params argumentos para mostrar dinamicamente
      * @desc $body archivo de la vista
-     * @desc $rol vista asociada
+     * @desc $programa vista asociada
      * **/
-    public function __render($params = NULL, $body = NULL, $rol = NULL){
+    public function __render($params = NULL, $body = NULL, $programa = NULL){
         $CI =& get_instance();
-        $CI->load->view($rol.'/header', $params);
-        $CI->load->view($rol.'/'.$body, $params);
-        $CI->load->view($rol.'/footer', $params);
+        $CI->load->view($programa.'/header', $params);
+        $CI->load->view($programa.'/'.$body, $params);
+        $CI->load->view($programa.'/footer', $params);
     }
     /**
      * Solo para panel de administración
@@ -33,16 +33,5 @@ class Vistas{
         $CI->load->view('login/header', $params);
         $CI->load->view('login/'.$body, $params);
         $CI->load->view('login/footer', $params);
-    }
-    /**
-    * Buscador
-    * @desc $params argumentos para mostrar dinamicamente
-    * @desc $body archivo de la vista
-    * **/
-    public function __render_search($params = NULL, $body = NULL){
-        $CI =& get_instance();
-        $CI->load->view('search/header', $params);
-        $CI->load->view('search/'.$body, $params);
-        $CI->load->view('search/footer', $params);
     }
 }

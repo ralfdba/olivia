@@ -10,14 +10,9 @@
 <?php echo form_open('admin/categorias/edit/'.$categoria_select[0]['id']); ?>
 <table class="table table-striped">
     <tr>
-        <td>ID:</td>
-        <td>
-            <input type="text" name="id" class="form-control" value="<?php echo $categoria_select[0]['id']; ?>" readonly>
-        </td>
-    </tr>
-    <tr>
         <td>Nombre:</td>
         <td>
+            <input type="hidden" name="id" class="form-control" value="<?php echo $categoria_select[0]['id']; ?>" readonly>
             <input type="text" name="nombre" class="form-control" value="<?php echo $categoria_select[0]['nombre']; ?>">
         </td>
     </tr>		

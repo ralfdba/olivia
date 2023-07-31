@@ -1,16 +1,11 @@
 <h1 class="display-4">Editar entrada</h1>
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart('admin/blog/edit/'.$blog_select[0]['id']); ?>
-<table class="table table-striped">
-    <tr>
-        <td>ID:</td>
-        <td>
-            <input type="text" name="id" class="form-control" value="<?php echo $blog_select[0]['id']; ?>" readonly="">
-        </td>
-    </tr>    
+<table class="table table-striped">  
     <tr>
         <td>T&iacute;tulo:</td>
         <td>
+            <input type="hidden" name="id" class="form-control" value="<?php echo $blog_select[0]['id']; ?>" readonly="">
             <input type="text" name="titulo" class="form-control" value="<?php echo $blog_select[0]['titulo']; ?>">
         </td>
     </tr>

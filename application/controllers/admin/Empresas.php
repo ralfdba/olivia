@@ -37,15 +37,6 @@ class Empresas extends CI_Controller{
                     $data["links"] = $this->pagination->create_links();
                 }
                 $this->vistas->__render_admin($data,'empresas_lista');
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-                
             } else {
                 redirect("login/index", 'refresh');
             }
@@ -60,18 +51,12 @@ class Empresas extends CI_Controller{
             if($this->ion_auth->is_admin()){
                 $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
                 $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[3]|max_length[200]');
-                $this->form_validation->set_rules('rut', 'RUT', 'required|trim|max_length[12]');
                 $this->form_validation->set_rules('direccion', 'Direcci&oacute;n', 'required|trim|min_length[3]|max_length[200]');
-                $this->form_validation->set_rules('correo', 'E-Mail', 'required|trim|valid_email');
-                $this->form_validation->set_rules('islab', 'Is Lab', 'trim');
                 if ($this->form_validation->run() == FALSE){
                     $this->vistas->__render_admin($data, 'empresas_create');
                 }else{
                     $params['nombre'] = $this->input->post('nombre');
-                    $params['rut'] = $this->input->post('rut');
                     $params['direccion'] = $this->input->post('direccion');
-                    $params['correo'] = $this->input->post('correo');//valida_rut
-                    $params['islab'] = $this->input->post('islab');
 
                     if($this->rut->valida_rut($params['rut']) == true){
                         $resp = $this->empresas_model->insert($params);
@@ -89,15 +74,6 @@ class Empresas extends CI_Controller{
                     $this->vistas->__render_admin($data, 'error');
 
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-                
             } else {
                 redirect("login/index", 'refresh');
             }
@@ -116,25 +92,13 @@ class Empresas extends CI_Controller{
                 $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
                 $this->form_validation->set_rules('id', 'ID', 'trim');
                 $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim|min_length[3]|max_length[40]');
-                $this->form_validation->set_rules('rut', 'RUT', 'required|trim|max_length[12]');
                 $this->form_validation->set_rules('direccion', 'Direcci&oacute;n', 'required|trim|min_length[3]|max_length[200]');
-                $this->form_validation->set_rules('correo', 'E-Mail', 'required|trim|valid_email');
-                $this->form_validation->set_rules('islab', 'Is lab', 'trim');
                 if ($this->form_validation->run() == FALSE){
                     $this->vistas->__render_admin($data, 'empresas_edit');
                 }else{
                     $params['id'] = $this->input->post('id');
                     $params['nombre'] = $this->input->post('nombre');
-                    $params['rut'] = $this->input->post('rut');
                     $params['direccion'] = $this->input->post('direccion');
-                    $params['correo'] = $this->input->post('correo');
-                    $params['islab'] = $this->input->post('islab');
-
-                    if($this->rut->valida_rut($params['rut']) == true){
-                        $resp = $this->empresas_model->update($params);
-                    }else{
-                        $data['message'] = "RUT No va&aacute;lido.";
-                    }
 
                     if(is_null($resp)){
                         $data['message'] = "Error al editar empresa";
@@ -145,15 +109,6 @@ class Empresas extends CI_Controller{
                     $this->vistas->__render_admin($data, 'error');
 
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-                
             } else {
                 redirect("login/index", 'refresh');
             }
@@ -161,6 +116,7 @@ class Empresas extends CI_Controller{
             redirect("login/index", 'refresh');
         }
     }
+    
     public function delete($id = NULL){
         if($this->ion_auth->logged_in()){
             $data['info_usuario'] = $this->ion_auth->user()->row();
@@ -175,15 +131,6 @@ class Empresas extends CI_Controller{
                     $data['message'] .=  "&nbsp; <a href=\"".site_url('admin/empresas')."\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i>Volver</a>";
                     $this->vistas->__render_admin($data,'error');
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-                
             } else {
                 redirect("login/index", 'refresh');
             }
@@ -192,46 +139,5 @@ class Empresas extends CI_Controller{
         }
     }
 
-    public function excel_empresas() {
-          if($this->ion_auth->logged_in()){
-               if($this->ion_auth->is_admin()){
-                   $fecha = date("Y-m-d");
-                   to_excel($this->empresas_model->download_excel_empresas(), $fecha."_gomed_empresas_lista");
-               }else{
-                   redirect("login/index", 'refresh');
-               }
-          } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-            $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-            
-        } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-            $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-            
-        } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-            $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-            
-        } else {
-            redirect("login/index", 'refresh');
-        }
-    }
-    public function excel_regiones() {
-          if($this->ion_auth->logged_in()){
-               if($this->ion_auth->is_admin()){
-                   $fecha = date("Y-m-d");
-                   to_excel($this->empresas_model->download_excel_regiones(), $fecha."_gomed_regiones_lista");
-               }else{
-                   redirect("login/index", 'refresh');
-               }
-          } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-            $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-            
-        } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-            $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-            
-        } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-            $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-            
-        } else {
-            redirect("login/index", 'refresh');
-        }
-    }
+
 }

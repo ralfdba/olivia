@@ -1,1 +1,9 @@
 body { font-family: 'Lexend', sans-serif !important; color: --var(--negro); }
+.padding-top30px { padding-top: 30px; }
+.breadcrumbs-bg {
+    background-color: #cccccc;
+    font-size: 12px;
+    height: 20px;
+}
+.breadcrumb .breadcrumb-item a:link { color: #fff; text-decoration: none; font-weight: 500; }
+.breadcrumb-item .active { color: #000; text-decoration: none; font-weight: 500; }

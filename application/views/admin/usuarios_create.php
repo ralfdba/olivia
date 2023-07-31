@@ -52,9 +52,10 @@
         </td>
     </tr>
 	<tr>
-            <td>Elegir rol:</td>
+            <td>Elegir grupo/rol:</td>
             <td>
                 <select name="grupo" class="form-control">
+                <option value="-0" selected="selected" disabled="disabled">Elegir grupo/rol</option>
                     <?php
                         for($n = 0; $n < count($grupos); $n++){
                             echo "<option value=\"".$grupos[$n]->id."\">".$grupos[$n]->name."</option>";

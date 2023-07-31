@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Ace SQL dump
-# Versión 20046
+# Versión 20050
 #
 # https://sequel-ace.com/
 # https://github.com/Sequel-Ace/Sequel-Ace
 #
-# Equipo: 192.168.100.54 (MySQL 5.5.5-10.5.18-MariaDB-0+deb11u1)
-# Base de datos: sagacms
-# Tiempo de generación: 2023-04-04 15:07:00 +0000
+# Equipo: 192.168.100.54 (MySQL 5.5.5-10.5.19-MariaDB-0+deb11u2)
+# Base de datos: saga
+# Tiempo de generación: 2023-07-31 13:37:33 +0000
 # ************************************************************
 
 
@@ -18,6 +18,21 @@ SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE='NO_AUTO_VALUE_ON_ZERO', SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Volcado de tabla acl
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `acl`;
+
+CREATE TABLE `acl` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `roles` longtext DEFAULT NULL,
+  `controllers` longtext DEFAULT NULL,
+  `actions` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 
 # Volcado de tabla comunas
@@ -438,9 +453,7 @@ LOCK TABLES `empresas` WRITE;
 
 INSERT INTO `empresas` (`id`, `empresa`, `rut`, `direccion`, `nombre_fantasia`, `estado_pago`, `email_notificacion`, `is_lab`)
 VALUES
-	(1,'NETSTREAM','99581960-0','Monjitas 90',NULL,0,'info@netstream.cl',0),
-	(2,'GO MED','1-9','Los Demos 29000',NULL,0,'enfermeras@gomed.cl',1),
-	(3,'R Y Q','78104200-5','Miguel Claro 578',NULL,0,'clientes@gomed.cl',0);
+	(1,'NETSTREAM','99581960-0','Monjitas 90',NULL,0,'info@netstream.cl',0);
 
 /*!40000 ALTER TABLE `empresas` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -765,9 +778,7 @@ LOCK TABLES `macategorias` WRITE;
 
 INSERT INTO `macategorias` (`id`, `nombre`, `tipo_muestra`)
 VALUES
-	(1,'Blog',1),
-	(3,'Hisopado nasofaringeo',2),
-	(4,'PCR Express nasal',2);
+	(1,'Blog',1);
 
 /*!40000 ALTER TABLE `macategorias` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -791,9 +802,7 @@ LOCK TABLES `maestros` WRITE;
 
 INSERT INTO `maestros` (`id`, `nombre`, `estado`)
 VALUES
-	(1,'Todos',0),
-	(2,'Toma Muestra',0),
-	(3,'Blog',0);
+	(1,'Todos',0);
 
 /*!40000 ALTER TABLE `maestros` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -932,23 +941,20 @@ CREATE TABLE `users` (
   `active` tinyint(1) unsigned DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  `company` varchar(100) DEFAULT NULL,
+  `company` int(10) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `rut` varchar(12) NOT NULL,
   `direccion` longtext DEFAULT NULL,
-  `membresia` int(2) NOT NULL DEFAULT 0 COMMENT '0 = sin membresía\n1 = membresía premium',
-  `disponibilidad` longtext DEFAULT NULL,
-  `costohora` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`,`membresia`,`rut`),
+  PRIMARY KEY (`id`,`rut`),
   KEY `rut_idx` (`rut`,`first_name`,`last_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `rut`, `direccion`, `membresia`, `disponibilidad`, `costohora`)
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `rut`, `direccion`)
 VALUES
-	(1,'127.0.0.1','administrator','$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36','','admin@admin.com','','hueVxkTAJkT2mrBd6rclue9a9716fd942064c452',1676821471,'IWoXOdFiVrFRFBATCTq0Oe',1268889823,1680204534,1,'Admin','istrator','ADMIN','0','1-1',NULL,0,NULL,NULL);
+	(1,'127.0.0.1','administrator','$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36','','admin@admin.com','','hueVxkTAJkT2mrBd6rclue9a9716fd942064c452',1676821471,'j51640.chl6K2vkj0NF1De',1268889823,1690809915,1,'Admin','istrator',1,'0','1-1',NULL);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

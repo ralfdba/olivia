@@ -97,4 +97,15 @@ class Empresas_model extends CI_Model{
 
     }
 
+    public function get_all_empresas_api(){
+        $query = $this->db->get($this->table['tabla']);
+        if ($query->num_rows() > 0){
+            foreach ($query->result() as $row){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;        
+    }    
+
 }

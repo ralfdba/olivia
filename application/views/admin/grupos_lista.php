@@ -1,61 +1,45 @@
-<h1 class="display-4">Administrador Grupos</h1>
-<p class="lead">
-    Agregue, edite o elimine grupos del sistema
-</p>
-<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-        <a href="<?=site_url('admin/grupos/create'); ?>">
-            <button type="button" class="btn btn-secondary">
-                <i class="fa fa-plus" aria-hidden="true"></i> Crear nuevo grupo
-            </button>
-        </a>
-    </div>   
-</div>
-<br />
-<?php if(isset($results)){ ?>
-<table class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripci&oacute;n</th>
-            <th scope="col">Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            for($n = 0; $n < count($results); $n++){
-                $edit[] = "<a href=\"".site_url('admin/grupos/edit/'.$results[$n]->id)."\""
-                        . "class=\"badge text-bg-info\">"
-                        . "<i class=\"fa fa-cogs\" aria-hidden=\"true\"></i>"
-                        . "</a>"
-                        . "<a href=\"".site_url('admin/grupos/delete/'.$results[$n]->id)."\""
-                        . "class=\"badge text-bg-danger\">"
-                        . "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
-                        . "</a>";
-                if( $results[$n]->id == 1 ){
-                    continue;
-                }else{                    
-                    echo "<tr>"
-                            . "<td>".$results[$n]->id."</td>"
-                            . "<td>".$results[$n]->name."</td>"
-                            . "<td>".$results[$n]->description."</td>"
-                            . "<td>".$edit[$n]."</td>"
-                            . "</tr>";                    
-                }               
-            }
-        ?>
-    </tbody>    
-</table>
-<?php }else{ ?>
-<div class="alert alert-info">
-    <p>
-        <i class="fa fa-exclamation" aria-hidden="true"></i> No existen datos para mostrar
-    </p>
-</div>
-<?php } ?>
-<?php if(isset($links)){ ?>
-    <?php
-        echo $links;
-    ?>
-<?php } ?>
+<section class="container">
+    <div class="row padding-top30px">
+        <div class="col-lg-8 col-sm-12">
+            <h1>Administrador Grupos/Roles</h1>
+            <p class="lead">
+                Agregue, edite o elimine grupos del sistema
+            </p>
+        </div>
+        <div class="col-lg-2 col-sm-12 text-end padding_top_30">
+            <a href="<?=site_url('admin/grupos/create'); ?>" class="btn btn-secondary ms-auto bg_celeste2">
+                <i class="fa fa-plus" aria-hidden="true"></i> Crear nuevo grupo/rol
+            </a>
+        </div>
+        <div class="col-lg-2 col-sm-12 text-end padding_top_30">
+            <a href="<?=site_url('admin/grupos/associate'); ?>" class="btn btn-secondary ms-auto bg_celeste2">
+                <i class="fa fa-plus" aria-hidden="true"></i> Asociar rol a controlador
+            </a>
+        </div>        
+    </div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-12">
+        <?php if(isset($results)){ ?>
+            <table id="grupos_admin_lista" class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripci&oacute;n</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>    
+            </table>
+            <?php }else{ ?>
+            <div class="alert alert-info">
+                <p>
+                    <i class="fa fa-exclamation" aria-hidden="true"></i> No existen datos para mostrar
+                </p>
+            </div>
+        <?php } ?>
+        </div>
+    </div>
+</section>

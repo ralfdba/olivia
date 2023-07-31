@@ -38,15 +38,6 @@ class Usuarios extends CI_Controller{
                     $data["links"] = $this->pagination->create_links();
                 }
                 $this->vistas->__render_admin($data,'usuarios_lista');
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
-                
             } else {
                 redirect("login/index", 'refresh');
             }
@@ -57,6 +48,7 @@ class Usuarios extends CI_Controller{
 
     public function edit($id = NULL){
         if($this->ion_auth->logged_in()){
+            $data['info_usuario'] = $this->ion_auth->user()->row();
             if($this->ion_auth->is_admin()){
                 if($id){
                     $params['usuarios_id'] = trim($id);
@@ -64,6 +56,8 @@ class Usuarios extends CI_Controller{
                 }
                 $user = $this->ion_auth->user()->row();
                 $data['grupo_usuario'] = $this->ion_auth->get_users_groups($user->id)->result();
+                $data['all_groups'] = $this->ion_auth->groups()->result();
+                $data['empresas'] = $this->empresas_model->select_all();                
                 //form
                 $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
                 $this->form_validation->set_rules('id', 'ID', 'trim');
@@ -71,8 +65,8 @@ class Usuarios extends CI_Controller{
                 $this->form_validation->set_rules('passwordcheck', 'Contrase&ntilde;a no coincide', 'trim|matches[passwordoriginal]');
                 $this->form_validation->set_rules('nombre', 'Campo nombre es necesario', 'required|trim|min_length[3]');
                 $this->form_validation->set_rules('apellidos', 'Campo apellidos es necesario', 'required|trim|min_length[3]');
-                $this->form_validation->set_rules('grupo', 'Campo grupo', 'trim');
-                $this->form_validation->set_rules('empresa', 'Empresa', 'trim');
+                $this->form_validation->set_rules('grupo', 'Campo grupo', 'trim|required');
+                $this->form_validation->set_rules('empresa', 'Empresa', 'trim|required');
                 $this->form_validation->set_rules('fono', 'Fono', 'trim|max_length[12]');
                 $this->form_validation->set_rules('run', 'RUN', 'trim|max_length[12]');
                 $this->form_validation->set_rules('correo', 'E-Mail', 'required|trim|valid_email');
@@ -117,14 +111,6 @@ class Usuarios extends CI_Controller{
                     $this->vistas->__render_admin($data, 'error');
 
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
             } else {
                 redirect('login/index', 'refresh');
             }
@@ -134,6 +120,7 @@ class Usuarios extends CI_Controller{
     }
     public function delete($id = NULL){
         if($this->ion_auth->logged_in()){
+            $data['info_usuario'] = $this->ion_auth->user()->row();
             if($this->ion_auth->is_admin()){
                 if($id){
                     $data['info_usuario'] = $this->permisos->get_user_data();
@@ -147,14 +134,6 @@ class Usuarios extends CI_Controller{
                 }else{
                     redirect("login/index", 'refresh');
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
             } else {
                 redirect('login/index', 'refresh');
             }
@@ -163,7 +142,7 @@ class Usuarios extends CI_Controller{
         }
     }
     public function activate($id = NULL){
-        if($this->ion_auth->logged_in()){
+        if($this->ion_auth->logged_in()){            
             if($this->ion_auth->is_admin()){
                 if($id){
                     $data['info_usuario'] = $this->permisos->get_user_data();
@@ -177,14 +156,6 @@ class Usuarios extends CI_Controller{
                 }else{
                     redirect("login/index", 'refresh');
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
             } else {
                 redirect('login/index', 'refresh');
             }
@@ -194,6 +165,7 @@ class Usuarios extends CI_Controller{
     }
     public function create(){
         if($this->ion_auth->logged_in()){
+            $data['info_usuario'] = $this->ion_auth->user()->row();
             if($this->ion_auth->is_admin()){
                 $data['info_usuario'] = $this->ion_auth->user()->row();
                 $data['grupos'] = $this->ion_auth->groups()->result();
@@ -251,14 +223,6 @@ class Usuarios extends CI_Controller{
                     $this->vistas->__render_admin($data, 'error');
 
                 }
-            } elseif( $this->ion_auth->in_group( "Usuarios/pacientes" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'pacientes');
-                
-            } elseif( $this->ion_auth->in_group( "Staff Clinico" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'staffclinico');
-                
-            } elseif( $this->ion_auth->in_group( "Admin Empresa" ) ) {
-                $this->vistas->__render( $data, 'usuarios_dashboard', 'adminempresa');
             } else {
                 redirect('login/index', 'refresh');
             }

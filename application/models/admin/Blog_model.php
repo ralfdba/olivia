@@ -94,4 +94,17 @@ class Blog_model extends CI_Model{
         return $resp;
     }
 
+    public function get_all_blog_api(){
+        $this->db->select("copublicacion.id,copublicacion.titulo,macategorias.nombre as categoria, copublicacion.fecha");
+        $this->db->join('macategorias', 'macategorias.id = copublicacion.categoria_id', 'left');
+        $query = $this->db->get($this->table['tabla']);
+        if ($query->num_rows() > 0){
+            foreach ($query->result() as $row){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }    
+
 }

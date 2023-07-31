@@ -10,14 +10,9 @@
 <?php echo form_open('admin/maestros/edit/'.$categoria_select[0]['id']); ?>
 <table class="table table-striped">
     <tr>
-        <td>ID:</td>
-        <td>
-            <input type="text" name="id" class="form-control" value="<?php echo $categoria_select[0]['id']; ?>" readonly>
-        </td>
-    </tr>
-    <tr>
         <td>Nombre:</td>
         <td>
+            <input type="hidden" name="id" class="form-control" value="<?php echo $categoria_select[0]['id']; ?>" readonly>
             <input type="text" name="nombre" class="form-control" value="<?php echo $categoria_select[0]['nombre']; ?>">
         </td>
     </tr>		
@@ -27,7 +22,6 @@
 		<select name="estado" class="form-control">
 		<option value="-1" disabled>Elegir</option>
 <?php
-print_r($categoria_select);
 if($categoria_select[0]['estado'] == 0){
 	echo "<option value=\"0\" selected=\"true\">Activo</option>";
 	echo "<option value=\"1\">Inactivo</option>";

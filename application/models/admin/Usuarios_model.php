@@ -46,4 +46,17 @@ class Usuarios_model extends CI_Model{
         return $result;
     }
 
+    public function get_all_users_for_api(){
+        $this->db->select("users.id,users.rut,concat(users.first_name,' ',users.last_name) as nombre,users.email,FROM_UNIXTIME(users.last_login,'%Y-%m-%d %h:%i:%s') as last_acceso, empresas.empresa");
+        $this->db->join('empresas', 'empresas.id = users.company', 'left');
+        $query = $this->db->get($this->table['tabla']);
+        if ($query->num_rows() > 0){
+            foreach ($query->result() as $row){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;        
+    }    
+
 }

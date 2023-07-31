@@ -39,4 +39,10 @@ class Grupos_model extends CI_Model{
         $result = $qry->result_array();
         return $result;
     }
+
+    public function get_all_groups_for_api(){
+        $qry = $this->db->get( $this->table['tabla'] );
+        $result = $qry->result_array();
+        return $result;
+    }    
 }
