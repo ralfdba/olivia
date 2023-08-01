@@ -1,7 +1,7 @@
 $(document).ready( function () {
     
     let create_tablas_filtradas = ( tablaid, controladorid ) => {
-        const endpoint = "http://localhost/saga-cms";
+        const endpoint = "http://localhost/olivia";
         var opt = ""
         //
         switch ( controladorid ) {

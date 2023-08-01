@@ -7,3 +7,7 @@ Write on CodeIgniter 3.X
 ### Default credentials ###
 * admin@admin.com
 * password
+
+### Install components via composer ###
+* cd ../olivia
+* composer install
