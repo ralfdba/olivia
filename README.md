@@ -1,11 +1,9 @@
 # README #
-Escrito en php utilizando CodeIgniter 3.X
+Write on CodeIgniter 3.X
 
 ### Credits ###
-* [ralf](https://sqldaxbi.com)
+* [ralf](https://ralf.cl)
 
 ### Default credentials ###
 * admin@admin.com
 * password
-### Important ###
-* Debe crear la carpeta "uploads" y "files" en la raíz del proyecto al mismo nivel de la carpeta "application"
