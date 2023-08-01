@@ -3,18 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('America/Santiago');
 /**
  * 
- * Configuración de templates
- * Se debe crear la carpeta con el mismo nombre del valor $config['template_custom']
- * en application/controllers/netstream
  * **/
-$config['template_custom'] = "protemax";
-$config['titulo'] = "protemax";
-$config['email'] = "no-reply@protemax.cl";
-$config['email_para'] = "info@protemax.cl";
-$config['sistema'] = "Saga CMS";
-$config['version_ns'] = "v2.1";
-$config['desripcion_general'] = "Soluciones y servicios IT para su empresa";
-$config['url_owner'] = "http://www.netstream.cl";
+$config['titulo'] = "Made by Olivia";
+$config['email'] = "no-reply@ralf.cl";
+$config['email_para'] = "info@ralf.cl";
+$config['sistema'] = "Olivia";
+$config['olivia_version'] = "v3.1";
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
