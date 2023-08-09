@@ -1,4 +1,4 @@
-![alt text](https://github.com/ralfdba/olivia/blob/main/assets/logo/olivia-logo.svg "Olivia the purrrrrrrrr cms")
+![alt text](https://github.com/ralfdba/olivia/blob/main/assets/logo/olivia-logo.svg "Olivia the purrrrrrrrr cms"){ width=100px }
 # About Olivia #
 * the purrrrrrrrr cms :)
 
