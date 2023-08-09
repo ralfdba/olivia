@@ -10,7 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link href=<?=base_url("assets/css/root.css")?> rel="stylesheet">
-    <link href=<?=base_url("assets/css/admin.css")?> rel="stylesheet"> 
+    <link href=<?=base_url("assets/css/admin.css")?> rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="<?php echo site_url("assets/logo/olivia-logo.svg"); ?>">
     </head>
     <body>
     <?php include("navegacion.php"); ?>

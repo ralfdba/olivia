@@ -1,6 +1,6 @@
 <section class="row">
     <div class="col-12 col-sm-12">
-        <img src="https://gomind.cl/assets/img/logo_go-mind.png" class="img-fluid mx-auto d-block margin_bottom30" width="120">
+        <img src="<?php echo site_url("assets/logo/olivia-logo.svg"); ?>" class="img-fluid mx-auto d-block margin_bottom30" width="120">
     </div>
     <div class="col">
     <?php echo validation_errors(); ?>
