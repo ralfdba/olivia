@@ -2,6 +2,9 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
+  background-image: url("../img/pawns.svg");
+  background-repeat: repeat-x;
+  background-position: top;
 }
 
 .form-signin {
@@ -36,4 +39,13 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.bg-login {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+}
+.padding-all-100px {
+  padding: 100px;
 }

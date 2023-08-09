@@ -1,7 +1,7 @@
 body { font-family: 'Lexend', sans-serif !important; color: --var(--negro); }
 .padding-top30px { padding-top: 30px; }
 .breadcrumbs-bg {
-    background-color: #cccccc;
+    background-color: #f686a0;
     font-size: 12px;
     height: 20px;
 }

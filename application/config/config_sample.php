@@ -4,9 +4,9 @@ date_default_timezone_set('America/Santiago');
 /**
  * 
  * **/
-$config['titulo'] = "Made by Olivia";
-$config['email'] = "no-reply@ralf.cl";
-$config['email_para'] = "info@ralf.cl";
+$config['titulo'] = "Made with Olivia";
+$config['email'] = "no-reply@ralfdba.com";
+$config['email_para'] = "info@ralf.com";
 $config['sistema'] = "Olivia";
 $config['olivia_version'] = "v3.1";
 /*
