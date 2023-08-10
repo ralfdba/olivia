@@ -1,4 +1,8 @@
-body { font-family: 'Lexend', sans-serif !important; color: --var(--negro); }
+body { font-family: 'Lexend', sans-serif !important; color: --var(--negro); font-weight: 200; }
+h1,h2,h3,h4,h5,h6 { font-weight: 400; }
+.olivia-text-logo {
+    font-family: 'Dancing Script', cursive;
+}
 .padding-top30px { padding-top: 30px; }
 .breadcrumbs-bg {
     background-color: #f686a0;
@@ -7,3 +11,6 @@ body { font-family: 'Lexend', sans-serif !important; color: --var(--negro); }
 }
 .breadcrumb .breadcrumb-item a:link { color: #fff; text-decoration: none; font-weight: 500; }
 .breadcrumb-item .active { color: #000; text-decoration: none; font-weight: 500; }
+.font-size-20px { font-size: 20px; font-weight: 400; }
+a:link.ralfdba { text-decoration: none; color: #f686a0; }
+a:hover.ralfdba { text-decoration: none; color: #d4ab22; }

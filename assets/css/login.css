@@ -5,6 +5,7 @@ body {
   background-image: url("../img/pawns.svg");
   background-repeat: repeat-x;
   background-position: top;
+  font-family: 'Lexend', sans-serif;
 }
 
 .form-signin {
@@ -49,3 +50,13 @@ body {
 .padding-all-100px {
   padding: 100px;
 }
+
+.olivia-text-logo {
+  font-family: 'Dancing Script', cursive;
+}
+button.btn-olivia-color { background-color: #fcdae2; color:#90908c; }
+button:hover.btn-olivia-color { background-color: #f2e5bc; }
+.font-size-20px { font-size: 20px; font-weight: 400; }
+
+a:link.ralfdba { text-decoration: none; color: #f686a0; }
+a:hover.ralfdba { text-decoration: none; color: #d4ab22; }
