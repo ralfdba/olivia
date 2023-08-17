@@ -82,7 +82,7 @@ class Usuarios extends CI_Controller{
                             'password'=>$this->input->post('passwordoriginal'),
                             'rut'=>$this->input->post('run'),
                             'phone'=>$this->input->post('fono'),
-                            'email'=>$this->input->post('correo'),
+                            'email'=>strtolower( $this->input->post('correo') ),
                             'disponibilidad'=> json_encode( $this->input->post('disponibilidad[]') ),
                             'costohora'=>$this->input->post('costohora')
                         );
@@ -94,7 +94,7 @@ class Usuarios extends CI_Controller{
                             'company'=>$this->input->post('empresa'),
                             'rut'=>$this->input->post('run'),
                             'phone'=>$this->input->post('fono'),
-                            'email'=>$this->input->post('correo'),
+                            'email'=>strtolower( $this->input->post('correo') ),
                             'disponibilidad'=> json_encode( $this->input->post('disponibilidad[]') ),
                             'costohora'=>$this->input->post('costohora')
                         );
@@ -190,10 +190,10 @@ class Usuarios extends CI_Controller{
                     * **/
                     if($this->rut->valida_rut( strtoupper( $this->input->post('rut') ) ) ){
                         //Paso 2, Se verifica mail para evitar duplicados
-                        if( !$this->ion_auth->email_check( $this->input->post('correo') ) ){
+                        if( !$this->ion_auth->email_check( strtolower ( $this->input->post('correo') ) ) ){
                             // Paso 3, si es correcto se crea el registro.
                             $password = $this->input->post('passwordoriginal');
-                            $email = $this->input->post('correo');
+                            $email = strtolower( $this->input->post('correo') );
                             $rut = $this->input->post('rut');
                             $additional_data = array(
                                 'first_name' => $this->input->post('nombre'),
