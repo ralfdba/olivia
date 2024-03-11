@@ -10,12 +10,12 @@ class S3 {
     
     //
     protected function auth_s3() {
-        //user AWS gomind-dev-s3
+        //user AWS
         $response = array(
-            "AWS_ACCESS_KEY_ID" => "AKIAYZRUI3ZENWOHTEHU",
-            "AWS_ACCESS_KEY_SECRET" => "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",
+            "AWS_ACCESS_KEY_ID" => "AAAAAAAAAAAAAAAAAA",
+            "AWS_ACCESS_KEY_SECRET" => "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "AWS_ACCESS_REGION" => "us-east-1",
-            "AWS_BUCKET_NAME" => "gomindbucket"
+            "AWS_BUCKET_NAME" => "NAMEBUCKET"
         );
 
         return $response;
